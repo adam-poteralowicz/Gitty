@@ -1,0 +1,75 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        applicationId "com.apap.gitty"
+        minSdk 26
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion versions.compose
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+
+    implementation deps.androidX.core
+    implementation deps.androidX.compose.activity
+    implementation deps.androidX.compose.material
+    implementation deps.androidX.compose.ui
+    implementation deps.androidX.compose.uiTooling.preview
+    implementation deps.androidX.lifecycle
+
+    implementation deps.hilt.runtime
+    kapt deps.hilt.compiler
+
+    implementation deps.retrofit.core
+    implementation deps.retrofit.moshiConverter
+
+    implementation deps.moshi.core
+    implementation deps.moshix.adapters
+    kapt deps.moshi.codegen
+
+    testImplementation deps.jUnit
+    androidTestImplementation deps.androidX.test.espresso
+    androidTestImplementation deps.androidX.test.jUnit
+    androidTestImplementation deps.androidX.compose.uiTestJUnit
+    debugImplementation deps.androidX.compose.uiTooling.core
+}

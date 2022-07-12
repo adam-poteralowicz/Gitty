@@ -1,0 +1,58 @@
+ext.versions = [
+    androidXJUnit: '1.1.3',
+    compose: '1.1.1',
+    composeActivity: '1.5.0',
+    composeFoundation: '1.2.0-alpha04',
+    composeMaterial: '1.0.0-alpha12',
+    core: '1.8.0',
+    espresso: '3.4.0',
+    hilt: '2.42',
+    jUnit: '4.13.2',
+    lifecycle: '2.5.0',
+    moshi: '1.13.0',
+    moshix: '0.18.3',
+    moshiConverter: '2.9.0',
+    retrofit: '2.9.0',
+]
+
+ext.deps = [
+    androidX: [
+        core: "androidx.core:core-ktx:$versions.core",
+        compose: [
+            activity   : "androidx.activity:activity-compose:$versions.composeActivity",
+            foundation : "androidx.compose.foundation:foundation:$versions.compose",
+            material   : "androidx.compose.material3:material3:$versions.composeMaterial",
+            ui         : "androidx.compose.ui:ui:$versions.compose",
+            uiTest     : "androidx.compose.ui:ui-test:$versions.compose",
+            uiTestJUnit: "androidx.compose.ui:ui-test-junit4:$versions.compose",
+            uiTooling  : [
+                core   : "androidx.compose.ui:ui-tooling:$versions.compose",
+                preview: "androidx.compose.ui:ui-tooling-preview:$versions.compose",
+            ],
+        ],
+        lifecycle: "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle",
+        test: [
+            espresso: "androidx.test.espresso:espresso-core:$versions.espresso",
+            jUnit   : "androidx.test.ext:junit:$versions.androidXJUnit",
+        ]
+    ],
+    hilt: [
+        compiler: "com.google.dagger:hilt-compiler:$versions.hilt",
+        runtime : "com.google.dagger:hilt-android:$versions.hilt",
+    ],
+    jUnit: "junit:junit:$versions.jUnit",
+    moshi: [
+            codegen: "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi",
+            core: "com.squareup.moshi:moshi:$versions.moshi",
+    ],
+    moshix: [
+            sealed: "dev.zacsweers.moshix:moshi-sealed-runtime:$versions.moshix",
+            sealedCodegen: "dev.zacsweers.moshix:moshi-sealed-codegen:$versions.moshix",
+            sealedReflect: "dev.zacsweers.moshix:moshi-sealed-reflect:$versions.moshix",
+            adapters: "dev.zacsweers.moshix:moshi-adapters:$versions.moshix"
+    ],
+    retrofit: [
+            core: "com.squareup.retrofit2:retrofit:$versions.retrofit",
+            moshiConverter: "com.squareup.retrofit2:converter-moshi:$versions.moshiConverter",
+    ],
+]
