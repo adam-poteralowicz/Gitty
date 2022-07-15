@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Gitty</string>
+    <string name="repository_search_hint"><![CDATA[<owner>/<repository>]]></string>
+    <string name="search">Search</string>
 </resources>

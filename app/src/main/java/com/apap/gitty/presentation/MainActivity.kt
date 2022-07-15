@@ -1,23 +1,25 @@
-package com.apap.gitty
+package com.apap.gitty.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.ui.Modifier
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.ui.ExperimentalComposeUiApi
 import com.apap.gitty.ui.theme.GittyTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @OptIn(
+        ExperimentalAnimationApi::class,
+        ExperimentalComposeUiApi::class
+    )
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             GittyTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {}
+                RepositorySearchView()
             }
         }
     }
