@@ -4,7 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.apap.gitty.data.storage.LastSearchedRepositoriesStore
+import com.apap.gitty.data.storage.SearchedRepositoriesStore
 import com.apap.gitty.domain.model.Commit
 import com.apap.gitty.domain.model.RepositoryId
 import com.apap.gitty.domain.usecase.GetRepository
@@ -22,7 +22,7 @@ import javax.inject.Inject
 class RepositorySearchViewModel @Inject constructor(
     private val getRepository: GetRepository,
     private val getRepositoryCommits: GetRepositoryCommits,
-    private val store: LastSearchedRepositoriesStore,
+    private val store: SearchedRepositoriesStore,
 ) : ViewModel() {
 
     private val _commitsFlow = MutableStateFlow<List<Commit>>(listOf())
