@@ -1,5 +1,7 @@
 package com.apap.gitty.presentation.viewmodel
 
+import android.content.Intent
+import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.apap.gitty.data.storage.LastSearchedRepositoriesStore
@@ -31,6 +33,9 @@ class RepositorySearchViewModel @Inject constructor(
 
     private val _repositoryIdFlow = MutableStateFlow<RepositoryId?>(null)
     val repositoryIdFlow = _repositoryIdFlow.asStateFlow()
+
+    private val _emailIntentFlow = MutableStateFlow<Intent?>(null)
+    val emailIntentFlow = _emailIntentFlow.asStateFlow()
 
     private val selectedCommits = mutableListOf<Commit>()
 
@@ -65,5 +70,16 @@ class RepositorySearchViewModel @Inject constructor(
                 action()
             }
         }
+    }
+
+    fun onSnackbarActionPerformed() {
+        val mailto = "mailto:bob@example.org" +
+                "?cc=" + "alice@example.com" +
+                "&subject=" + Uri.encode("Selected commits") +
+                "&body=" + Uri.encode(selectedCommits.toString())
+
+        val emailIntent = Intent(Intent.ACTION_SENDTO)
+        emailIntent.data = Uri.parse(mailto)
+        _emailIntentFlow.value = emailIntent
     }
 }

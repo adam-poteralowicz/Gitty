@@ -1,6 +1,7 @@
 package com.apap.gitty.presentation.view
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -42,6 +43,7 @@ fun RepositorySearchView(
     owner: String?,
     repo: String?,
     onHistoryOpened: () -> Unit,
+    sendEmail: (Intent) -> Unit,
     viewModel: RepositorySearchViewModel = hiltViewModel()
 ) {
 
@@ -52,11 +54,16 @@ fun RepositorySearchView(
     val commits by viewModel.commitsFlow.collectAsState()
     val repositoryId by viewModel.repositoryIdFlow.collectAsState()
     val state by viewModel.loadingStateFlow.collectAsState()
+    val emailIntent by viewModel.emailIntentFlow.collectAsState()
 
     LaunchedEffect(Unit) {
         if (owner != null && repo != null) {
             viewModel.onRepositorySearched("$owner/$repo")
         }
+    }
+
+    LaunchedEffect(emailIntent) {
+        emailIntent?.let { sendEmail(it) }
     }
 
     Scaffold(
@@ -177,10 +184,13 @@ fun CommitItem(
             .background(Purple200, shape = RectangleShape)
             .clickable {
                 viewModel.addSelectedCommit(commit) {
-                    snackbarHostState.showSnackbar(
+                    when (snackbarHostState.showSnackbar(
                         "Selected commit for sending",
                         actionLabel = "Send"
-                    )
+                    )) {
+                        SnackbarResult.ActionPerformed -> viewModel.onSnackbarActionPerformed()
+                        else -> Unit
+                    }
                 }
             }
     ) {

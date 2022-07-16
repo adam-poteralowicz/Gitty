@@ -1,5 +1,6 @@
 package com.apap.gitty.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -34,7 +35,10 @@ class MainActivity : ComponentActivity() {
                         RepositorySearchView(
                             owner = entry.arguments?.getString("owner"),
                             repo = entry.arguments?.getString("repo"),
-                            onHistoryOpened = { navController.navigate(HISTORY) }
+                            onHistoryOpened = { navController.navigate(HISTORY) },
+                            sendEmail = { intent ->
+                                startActivity(Intent.createChooser(intent, null))
+                            }
                         )
                     }
                     composable(HISTORY) {
