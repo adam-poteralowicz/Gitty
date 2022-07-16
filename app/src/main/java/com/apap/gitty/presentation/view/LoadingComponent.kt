@@ -1,4 +1,4 @@
-package com.apap.gitty.presentation
+package com.apap.gitty.presentation.view
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalAnimationApi

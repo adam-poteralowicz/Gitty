@@ -1,5 +1,7 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Gitty</string>
-    <string name="repository_search_hint"><![CDATA[<owner>/<repository>]]></string>
+    <string name="history">Search history</string>
+    <string name="no_repository_found_error" tools:ignore="TypographyEllipsis">Oops! No repository found. Try again...</string>
+    <string name="repository_search_hint"><![CDATA[<owner> / <repository>]]></string>
     <string name="search">Search</string>
 </resources>

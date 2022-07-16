@@ -1,5 +1,6 @@
 package com.apap.gitty.di
 
+import com.apap.gitty.domain.LocalDateTimeJsonAdapter
 import com.squareup.moshi.Moshi
 import javax.inject.Singleton
 
@@ -37,5 +38,7 @@ object BackendModule {
     }
 
     @Provides
-    fun moshi(): Moshi = Moshi.Builder().build()
+    fun moshi(): Moshi = Moshi.Builder()
+        .add(LocalDateTimeJsonAdapter())
+        .build()
 }
