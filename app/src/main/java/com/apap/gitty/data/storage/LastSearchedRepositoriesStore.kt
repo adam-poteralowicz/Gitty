@@ -25,13 +25,13 @@ class LastSearchedRepositoriesStore @Inject constructor(
             }
         }
 
-        val serialized = cache.joinToString(",") { data }
+        val serialized = cache.joinToString(",")
         sharedPreferences.edit()
             .putString(LAST_SEARCHED_REPOSITORIES_KEY, serialized)
             .apply()
     }
 
-    fun loadRepositories(): List<String> {
+    fun loadFromSharedPreferences(): List<String> {
         val serialized = sharedPreferences.getString(LAST_SEARCHED_REPOSITORIES_KEY, null).orEmpty()
         return serialized.split(',')
     }

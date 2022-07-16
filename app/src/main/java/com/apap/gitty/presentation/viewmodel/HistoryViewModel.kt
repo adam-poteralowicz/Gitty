@@ -16,6 +16,7 @@ class HistoryViewModel @Inject constructor(
     val repositoriesFlow = _repositoriesFlow.asStateFlow()
 
     init {
-        _repositoriesFlow.value = store.load()
+        val cachedHistory = store.load()
+        _repositoriesFlow.value = cachedHistory.ifEmpty { store.loadFromSharedPreferences() }
     }
 }
