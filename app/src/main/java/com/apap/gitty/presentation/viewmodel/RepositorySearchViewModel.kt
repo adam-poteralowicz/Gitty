@@ -53,8 +53,8 @@ class RepositorySearchViewModel @Inject constructor(
             }
 
             repository?.let {
-                _repositoryIdFlow.value = RepositoryId(it.id)
                 store.add(owner, name)
+                _repositoryIdFlow.value = RepositoryId(it.id)
             } ?: run { _loadingStateFlow.value = LoadingState.Failure }
             repositoryCommits?.let {
                 _commitsFlow.value = it

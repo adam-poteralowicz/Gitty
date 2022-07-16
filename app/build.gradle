@@ -72,7 +72,13 @@ dependencies {
     implementation deps.moshix.adapters
     kapt deps.moshi.codegen
 
+    testImplementation deps.androidX.archCoreTesting
+    testImplementation deps.assertJ
     testImplementation deps.jUnit
+    testImplementation deps.kotlinCoroutines.test
+    testImplementation deps.mockk
+    testImplementation deps.turbine
+
     androidTestImplementation deps.androidX.test.espresso
     androidTestImplementation deps.androidX.test.jUnit
     androidTestImplementation deps.androidX.compose.uiTestJUnit

@@ -1,4 +1,6 @@
 ext.versions = [
+    archCoreTesting: '2.1.0',
+    assertJ: '3.22.0',
     androidXJUnit: '1.1.3',
     compose: '1.1.1',
     composeActivity: '1.5.0',
@@ -10,15 +12,19 @@ ext.versions = [
     hilt: '2.42',
     hiltNavigation: '1.0.0',
     jUnit: '4.13.2',
+    kotlinCoroutines: '1.6.0',
     lifecycle: '2.5.0',
+    mockk: '1.12.2',
     moshi: '1.13.0',
     moshix: '0.18.3',
     moshiConverter: '2.9.0',
     retrofit: '2.9.0',
+    turbine: '0.7.0',
 ]
 
 ext.deps = [
     androidX: [
+        archCoreTesting: "androidx.arch.core:core-testing:$versions.archCoreTesting",
         core: "androidx.core:core-ktx:$versions.core",
         compose: [
             activity   : "androidx.activity:activity-compose:$versions.composeActivity",
@@ -40,11 +46,16 @@ ext.deps = [
             jUnit   : "androidx.test.ext:junit:$versions.androidXJUnit",
         ]
     ],
+    assertJ: "org.assertj:assertj-core:$versions.assertJ",
     hilt: [
         compiler: "com.google.dagger:hilt-compiler:$versions.hilt",
         runtime : "com.google.dagger:hilt-android:$versions.hilt",
     ],
     jUnit: "junit:junit:$versions.jUnit",
+    kotlinCoroutines: [
+            test : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.kotlinCoroutines",
+    ],
+    mockk: "io.mockk:mockk:$versions.mockk",
     moshi: [
             codegen: "com.squareup.moshi:moshi-kotlin-codegen:$versions.moshi",
             core: "com.squareup.moshi:moshi:$versions.moshi",
@@ -59,4 +70,5 @@ ext.deps = [
             core: "com.squareup.retrofit2:retrofit:$versions.retrofit",
             moshiConverter: "com.squareup.retrofit2:converter-moshi:$versions.moshiConverter",
     ],
+    turbine: "app.cash.turbine:turbine:$versions.turbine",
 ]
